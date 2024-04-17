@@ -2,7 +2,7 @@
 
 source send-message.sh
 
-bunInstallAndBuild() {
+bunInstallTestAndBuild() {
     local replyTopic=$1
     if ! bun install; then
         echo "Bun build failed."

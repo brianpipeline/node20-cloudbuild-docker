@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 load $(pwd)/send-message.sh
-load $(pwd)/bun-install-and-build.sh
+load $(pwd)/bun-install-test-and-build.sh
 BATS_TEST_DIRNAME=$(pwd)
 export PATH="$BATS_TEST_DIRNAME/stub:$PATH"
 
@@ -25,7 +25,7 @@ teardown() {
     # Stub gcloud builds submit command to return success
     stub bun "exit 0"
     # Run your function
-    run bunInstallAndBuild "topic"
+    run bunInstallTestAndBuild "topic"
     # Check if it succeeds
     [ "$status" -eq 0 ]
     [[ "$output" == *"Bun install succeeded."* ]]
