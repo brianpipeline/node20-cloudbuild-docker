@@ -42,7 +42,7 @@ teardown() {
 
 @test "getNodeVersionName should successfully return a project version." {
     # Stub gcloud builds submit command to return success
-    stub grep "echo version"
+    stub jq "echo version"
     # Run your function
     run getNodeVersionName
     # Check if it succeeds
@@ -52,7 +52,7 @@ teardown() {
 
 @test "getNodeVersionName should exit 1 when it can't find a project version." {
     # Stub gcloud builds submit command to return success
-    stub grep "exit 0"
+    stub jq "exit 0"
     # Run your function
     run getNodeVersionName
     # Check if it succeeds
