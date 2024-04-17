@@ -11,6 +11,12 @@ bunInstallAndBuild() {
     fi
     echo "Bun install succeeded."
 
+    if ! bun run test; then
+        echo "Bun test failed."
+        sendMessage "$replyTopic" "Pipeline failed."
+        exit 1
+    fi
+
     if ! bun run build; then
         echo "Bun build failed."
         sendMessage "$replyTopic" "Pipeline failed."
